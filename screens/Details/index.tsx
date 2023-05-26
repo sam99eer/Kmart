@@ -10,7 +10,9 @@ const Details = () => {
         <ScrollView style={styles.container}>
             <Image source={IMAGES.Veggies} />
             <SafeAreaView style={styles.safeAreaContainer}>
-                <Text style={styles.heading}>Get your registered with us</Text>
+                <Text style={styles.heading}>
+                    Get yourself registered with us
+                </Text>
                 <View style={styles.fields}>
                     <TextField
                         label='Full Name'
