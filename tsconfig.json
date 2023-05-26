@@ -13,7 +13,8 @@
             "@store/*": ["store/*"],
             "@svg/*": ["assets/svg/*"],
             "@fonts/*": ["fonts/*"],
-            "@hooks/*": ["hooks/*"]
+            "@hooks/*": ["hooks/*"],
+            "@assets/*": ["assets/*"]
         }
     }
 }

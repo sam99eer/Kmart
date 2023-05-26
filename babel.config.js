@@ -17,10 +17,10 @@ module.exports = function (api) {
             '@store': "./store",
             '@svg': "./assets/svg",
             '@fonts': './fonts',
+            '@assets': './assets'
           },
         },
       ],
-      'react-native-reanimated/plugin',
     ],
   };
 };

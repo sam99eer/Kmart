@@ -1,8 +1,12 @@
 import { FONTS } from '@constants/Fonts';
+import { NavigationContainer } from '@react-navigation/native';
+import Routes from '@routes/Routes';
+import store from '@store/store';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,7 +29,19 @@ const App = () => {
         loadAssets();
     }, []);
 
-    return <>{loaded ? <Text>Loaded</Text> : null}</>;
+    return (
+        <>
+            {loaded ? (
+                <Provider store={store}>
+                    <SafeAreaProvider>
+                        <NavigationContainer>
+                            <Routes />
+                        </NavigationContainer>
+                    </SafeAreaProvider>
+                </Provider>
+            ) : null}
+        </>
+    );
 };
 
 export default App;
