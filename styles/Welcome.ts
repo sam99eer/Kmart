@@ -12,8 +12,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         color: COLORS.white,
-        paddingTop: 36,
-        paddingBottom: 20,
+        paddingVertical: 20,
         fontFamily: 'semibold',
         fontSize: 48,
         textAlign: 'center',

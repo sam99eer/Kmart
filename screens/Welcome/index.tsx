@@ -1,5 +1,6 @@
 import PrimaryButton from '@components/PrimaryButton';
 import { IMAGES } from '@constants/Images';
+import { SCREENS } from '@models/screens';
 import { WelcomeScreenProps } from '@models/screens/StackScreens';
 import styles from '@styles/Welcome';
 import WhiteCarrot from '@svg/WhiteCarrot';
@@ -8,6 +9,10 @@ import { ImageBackground, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Welcome = ({ navigation }: WelcomeScreenProps) => {
+    const navigateHandler = () => {
+        navigation.navigate(SCREENS.DETAILS);
+    };
+
     return (
         <ImageBackground
             source={IMAGES.Welcome}
@@ -21,7 +26,10 @@ const Welcome = ({ navigation }: WelcomeScreenProps) => {
                     Get your groceries as fast as in an hour
                 </Text>
                 <View style={styles.btnContainer}>
-                    <PrimaryButton text='Get Started' onPress={() => {}} />
+                    <PrimaryButton
+                        text='Get Started'
+                        onPress={navigateHandler}
+                    />
                 </View>
             </SafeAreaView>
         </ImageBackground>

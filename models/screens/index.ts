@@ -1,5 +1,6 @@
 export enum SCREENS {
     WELCOME = 'Welcome',
+    DETAILS = 'Details',
 }
 
 export type NavigationProp = {
