@@ -4,6 +4,7 @@ import PublicRoutes from '@routes/PublicRoutes';
 import { personalDetailsActions } from '@store/actions';
 import { StoreModel } from '@store/store';
 import * as SecureStore from 'expo-secure-store';
+import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,7 +35,10 @@ const Routes = () => {
                 .catch((err) =>
                     console.log('Error file fetching SecureStore - ', err)
                 )
-                .finally(() => setLoading(false));
+                .finally(async () => {
+                    setLoading(false);
+                    await SplashScreen.hideAsync();
+                });
         }
         checkToken();
     }, [details.name, details.phone]);

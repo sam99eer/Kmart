@@ -24,7 +24,6 @@ const App = () => {
             });
 
             setLoaded(true);
-            await SplashScreen.hideAsync();
         }
         loadAssets();
     }, []);
