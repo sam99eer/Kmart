@@ -6,13 +6,14 @@ import { IMAGES } from '@constants/Images';
 import { IRegister } from '@models/data/RegisterModel';
 import { ISuccessError } from '@models/data/SuccessErrorModel';
 import { SCREENS } from '@models/screens';
-import styles from '@styles/Details';
+import { RegisterScreenProps } from '@models/screens/StackScreens';
+import styles from '@styles/Register';
 import * as SecureStore from 'expo-secure-store';
 import React, { useState } from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Details = () => {
+const Register = ({ navigation }: RegisterScreenProps) => {
     const [data, setData] = useState<IRegister>({
         phone: '',
         name: '',
@@ -43,6 +44,31 @@ const Details = () => {
     };
 
     const signUpHandler = () => {
+        if (data.name.trim().length < 1) {
+            setModal(oldState => ({
+                ...oldState,
+                error: {
+                    isVisible: true,
+                    btnText: 'Go Back',
+                    heading: 'Invalid Name',
+                    msg: 'Please enter a valid Name'
+                }
+            }))
+            return;
+        }
+
+        if (data.phone.trim().length !== 10) {
+            setModal(oldState => ({
+                ...oldState,
+                error: {
+                    isVisible: true,
+                    btnText: 'Go Back',
+                    heading: 'Invalid Mobile Number',
+                    msg: 'Please enter a valid 10 digits Mobile Number'
+                }
+            }))
+            return;
+        }
         setLoading(true);
         SecureStore.getItemAsync('users')
             .then(
@@ -63,7 +89,6 @@ const Details = () => {
                                 heading: 'Already Registered',
                             },
                         }));
-                        setLoading(false);
                         return;
                     }
                     SecureStore.setItemAsync(
@@ -80,7 +105,7 @@ const Details = () => {
                                 success: {
                                     isVisible: true,
                                     msg: 'You have successfully registered your account with Kmart',
-                                    btnText: 'Go to Home',
+                                    btnText: 'Go to Login',
                                     heading: 'Registration Successful!',
                                 },
                             }))
@@ -99,11 +124,16 @@ const Details = () => {
                     }));
                 }
             )
-            .finally(() => {
-                console.log('final block');
-
-                setLoading(false);
-            });
+            .catch(err => setModal((oldState) => ({
+                ...oldState,
+                error: {
+                    isVisible: true,
+                    msg: err?.toString(),
+                    btnText: 'Go Back',
+                    heading: 'Some Error occured',
+                },
+            })))
+            .finally(() => setLoading(false));
     };
 
     const closeModalHandler = (modalId: keyof ISuccessError) => {
@@ -118,7 +148,9 @@ const Details = () => {
         }));
     };
 
-    const navigateHandler = (screen: SCREENS) => {};
+    const navigateHandler = (screen: SCREENS) => {
+        navigation.navigate(screen);
+    };
 
     return (
         <>
@@ -127,6 +159,7 @@ const Details = () => {
                     heading={modal.success.heading}
                     text={modal.success.msg}
                     btnText={modal.success.btnText}
+                    onSuccess={navigateHandler.bind(this, SCREENS.LOGIN)}
                 />
             ) : null}
             {modal.error.isVisible ? (
@@ -141,6 +174,7 @@ const Details = () => {
                 style={styles.container}
                 contentContainerStyle={styles.contentContainer}
                 showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps='handled'
             >
                 <Image source={IMAGES.Veggies} />
                 <SafeAreaView style={styles.safeAreaContainer}>
@@ -166,7 +200,10 @@ const Details = () => {
                             onPress={signUpHandler}
                             isLoading={loading}
                         />
-                        <Text style={styles.alreadyAcct}>
+                        <Text
+                            style={styles.alreadyAcct}
+                            onPress={navigateHandler.bind(this, SCREENS.LOGIN)}
+                        >
                             Already have an account?{' '}
                             <Text style={styles.signUp}>Sign In</Text>
                         </Text>
@@ -177,4 +214,4 @@ const Details = () => {
     );
 };
 
-export default Details;
+export default Register;
