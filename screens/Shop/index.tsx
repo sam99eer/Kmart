@@ -1,11 +1,13 @@
+import styles from '@styles/Shop';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Shop = () => {
     return (
-        <View>
+        <SafeAreaView style={styles.container}>
             <Text>DashboardShop</Text>
-        </View>
+        </SafeAreaView>
     );
 };
 
