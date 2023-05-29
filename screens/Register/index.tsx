@@ -94,11 +94,11 @@ const Register = ({ navigation }: RegisterScreenProps) => {
                     SecureStore.setItemAsync(
                         'details',
                         JSON.stringify(data)
-                    ).then(async () => {
+                    ).then(() => {
                         parsedUsers.push(data);
                         SecureStore.setItemAsync(
                             'users',
-                            JSON.stringify(users)
+                            JSON.stringify(parsedUsers)
                         ).then(() =>
                             setModal((oldState) => ({
                                 ...oldState,
@@ -148,8 +148,8 @@ const Register = ({ navigation }: RegisterScreenProps) => {
         }));
     };
 
-    const navigateHandler = (screen: SCREENS) => {
-        navigation.navigate(screen);
+    const navigateHandler = () => {
+        navigation.navigate(SCREENS.LOGIN);
     };
 
     return (
@@ -202,7 +202,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
                         />
                         <Text
                             style={styles.alreadyAcct}
-                            onPress={navigateHandler.bind(this, SCREENS.LOGIN)}
+                            onPress={navigateHandler}
                         >
                             Already have an account?{' '}
                             <Text style={styles.signUp}>Sign In</Text>

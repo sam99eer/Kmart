@@ -27,8 +27,8 @@ const Login = ({ navigation }: LoginScreenProps) => {
 
     const dispatch = useDispatch();
 
-    const navigateHandler = (screen: SCREENS) => {
-        navigation.navigate(screen);
+    const navigateHandler = () => {
+        navigation.navigate(SCREENS.REGISTER);
     };
 
     const loginHandler = () => {
@@ -82,12 +82,12 @@ const Login = ({ navigation }: LoginScreenProps) => {
         <>
             {modal.isVisible ? <ErrorModal btnText={modal.btnText} heading={modal.heading} text={modal.msg} onClose={closeModalHandler} /> : null}
             <SafeAreaView style={styles.container}>
-                <ScrollView keyboardShouldPersistTaps='handled'>
+                <ScrollView keyboardShouldPersistTaps='handled' showsVerticalScrollIndicator={false}>
                     <View style={styles.carrotHolder}>
                         <RedCarrot />
                     </View>
                     <Text style={styles.heading}>
-                        Get yourself registered with us
+                        Enter your KMart registered Mobile Number
                     </Text>
                     <View style={styles.fields}>
                         <TextField
@@ -104,7 +104,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
                         />
                         <Text
                             style={styles.alreadyAcct}
-                            onPress={navigateHandler.bind(this, SCREENS.REGISTER)}
+                            onPress={navigateHandler}
                         >
                             Don't have an account?{' '}
                             <Text style={styles.signIn}>Sign Up</Text>

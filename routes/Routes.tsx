@@ -33,7 +33,7 @@ const Routes = () => {
                     }
                 })
                 .catch((err) =>
-                    console.log('Error file fetching SecureStore - ', err)
+                    console.log('Error while fetching SecureStore - ', err)
                 )
                 .finally(async () => {
                     setLoading(false);
