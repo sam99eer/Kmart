@@ -5,4 +5,7 @@ export const COLORS = {
     black: '#030303',
     border: '#E2E2E2',
     grey: '#7C7C7C',
+    backdrop: 'rgba(0, 0, 0, 0.6)',
+    lightblack: '#181725',
+    danger: '#DC3545',
 };

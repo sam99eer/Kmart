@@ -15,4 +15,5 @@ const WhiteCarrot = (props: SvgProps) => (
         />
     </Svg>
 );
-export default WhiteCarrot;
+
+export default React.memo(WhiteCarrot);

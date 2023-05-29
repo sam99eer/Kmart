@@ -12,7 +12,9 @@ const TextField = (props: {
 }) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>{props.label}</Text>
+            <Text style={styles.label}>
+                {props.value.length > 0 ? props.label : ''}
+            </Text>
             <TextInput
                 value={props.value}
                 onChangeText={props.onChange}

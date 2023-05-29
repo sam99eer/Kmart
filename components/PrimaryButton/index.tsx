@@ -1,18 +1,30 @@
+import { COLORS } from '@constants/Colors';
 import styles from '@styles/PrimaryButton';
 import React from 'react';
-import { Pressable, Text } from 'react-native';
+import { ActivityIndicator, Pressable, Text } from 'react-native';
 
-const PrimaryButton = (props: { text: string; onPress: () => void }) => {
+const PrimaryButton = (props: {
+    text: string;
+    onPress: () => void;
+    isLoading?: boolean;
+    error?: boolean;
+}) => {
+    const customStyle = !!props?.error
+        ? [styles.container, styles.errorContainer]
+        : styles.container;
+
     return (
         <Pressable
-            onPress={props.onPress}
+            onPress={!!props.isLoading ? null : props.onPress}
             style={({ pressed }) =>
-                pressed
-                    ? [styles.container, styles.pressedBtn]
-                    : styles.container
+                pressed ? [customStyle, styles.pressedBtn] : customStyle
             }
         >
-            <Text style={styles.text}>{props.text}</Text>
+            {!!props.isLoading ? (
+                <ActivityIndicator color={COLORS.white} />
+            ) : (
+                <Text style={styles.text}>{props.text}</Text>
+            )}
         </Pressable>
     );
 };

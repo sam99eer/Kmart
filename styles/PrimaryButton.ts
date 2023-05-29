@@ -14,9 +14,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'semibold',
     },
-
     pressedBtn: {
         opacity: 0.8,
+    },
+    errorContainer: {
+        backgroundColor: COLORS.danger,
     },
 });
 

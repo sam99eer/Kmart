@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 24,
     },
+    contentContainer: {
+        paddingBottom: 40,
+    },
     heading: {
         color: COLORS.black,
         fontFamily: 'semibold',
@@ -19,6 +22,15 @@ const styles = StyleSheet.create({
     fields: {
         rowGap: 30,
         paddingVertical: 30,
+    },
+    alreadyAcct: {
+        color: COLORS.black,
+        fontFamily: 'semibold',
+        fontSize: 14,
+        textAlign: 'center',
+    },
+    signUp: {
+        color: COLORS.primary,
     },
 });
 

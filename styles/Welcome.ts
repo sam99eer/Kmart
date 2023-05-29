@@ -1,9 +1,10 @@
 import { COLORS } from '@constants/Colors';
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width: Dimensions.get('window').width + 1,
     },
     safeAreaContainer: {
         flex: 1,
