@@ -5,9 +5,10 @@ export enum SCREENS {
   SHOP = "Shop",
   DASHBOARD = "Dashboard",
   CATEGORY_DATA = "CategoryData",
+  PRODUCT_DETAILS = "ProductDetails",
 }
 
 export type NavigationProp = {
-  navigate: (screen: SCREENS, isEditMode?: unknown) => void;
+  navigate: (screen: SCREENS, params?: unknown) => void;
   goBack: () => void;
 };

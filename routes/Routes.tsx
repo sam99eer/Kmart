@@ -14,7 +14,6 @@ const Routes = () => {
     );
 
     const [loading, setLoading] = useState(true);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -50,6 +49,7 @@ const Routes = () => {
             ) : (
                 <PublicRoutes />
             )}
+
         </>
     );
 };
