@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     backgroundColor: COLORS.white,
-    minWidth: 170,
+    width: 170,
     borderRadius: 18,
   },
   add: {
