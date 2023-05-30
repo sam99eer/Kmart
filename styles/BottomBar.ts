@@ -17,6 +17,19 @@ const styles = StyleSheet.create({
   bottomSafeArea: {
     backgroundColor: COLORS.white,
   },
+  badge: {
+    backgroundColor: COLORS.primary,
+    fontFamily: "semibold",
+    color: COLORS.white,
+    position: "absolute",
+    top: 2,
+    left: 5,
+    height: 18,
+    width: 18,
+  },
+  hide: {
+    display: "none",
+  },
 });
 
 export default styles;

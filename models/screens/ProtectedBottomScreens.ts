@@ -4,6 +4,7 @@ import { ProtectedStackScreens } from "./ProtectedStackScreens";
 
 type ProtectedBottomScreens = ProtectedStackScreens & {
   [SCREENS.SHOP]: undefined;
+  [SCREENS.CART]: undefined;
 };
 
 export type ShopScreenProps = NativeStackScreenProps<

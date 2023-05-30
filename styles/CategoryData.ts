@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     position: "relative",
+    paddingVertical: 12,
   },
   headerText: {
     color: COLORS.lightblack,
@@ -17,7 +18,6 @@ const styles = StyleSheet.create({
     fontFamily: "bold",
     marginLeft: "auto",
     marginRight: "auto",
-    paddingVertical: 12,
   },
   contentContainer: {
     rowGap: 15,
