@@ -14,7 +14,8 @@
             "@svg/*": ["assets/svg/*"],
             "@fonts/*": ["fonts/*"],
             "@hooks/*": ["hooks/*"],
-            "@assets/*": ["assets/*"]
+            "@assets/*": ["assets/*"],
+            "@data/*": ["data/*"]
         }
     }
 }

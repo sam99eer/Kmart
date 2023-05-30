@@ -7,7 +7,6 @@ export const IMAGES = {
   mixBasket: require("@assets/products/baskets/mix_basket.png"),
   veggieBasket: require("@assets/products/baskets/veggie_basket.png"),
   cokeCan: require("@assets/products/beverages/cokecan.png"),
-  cokeZeroCan: require("@assets/products/beverages/cokezero_can.png"),
   fanta: require("@assets/products/beverages/fanta.png"),
   fantaCan: require("@assets/products/beverages/fanta_can.png"),
   monsterCan: require("@assets/products/beverages/monster_can.png"),
