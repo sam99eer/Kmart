@@ -11,7 +11,7 @@ const CartSlice = createSlice({
     initialState,
     reducers: {
         cartHandler(state, action: PayloadAction<{
-            data: IProduct,
+            data: IProduct | ICart,
             action: CartQuantityAction
         }>) {
 
@@ -50,6 +50,9 @@ const CartSlice = createSlice({
             if (findIndex !== -1) {
                 state.data?.splice(findIndex, 1);
             }
+        },
+        clearCart(state) {
+            state.data = [];
         }
     }
 })

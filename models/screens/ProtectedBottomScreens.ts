@@ -12,4 +12,9 @@ export type ShopScreenProps = NativeStackScreenProps<
   SCREENS.SHOP
 >;
 
+export type CartScreenProps = NativeStackScreenProps<
+  ProtectedBottomScreens,
+  SCREENS.CART
+>;
+
 export { ProtectedBottomScreens };

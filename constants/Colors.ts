@@ -10,4 +10,5 @@ export const COLORS = {
   danger: "#DC3545",
   lightWhite: "#F2F3F2",
   tag: "#EBEBEB",
+  tagBg: "#489E67",
 };
