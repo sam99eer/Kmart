@@ -8,10 +8,11 @@ const PrimaryButton = (props: {
     onPress: () => void;
     isLoading?: boolean;
     error?: boolean;
+    colView?: boolean;
 }) => {
     const customStyle = !!props?.error
-        ? [styles.container, styles.errorContainer]
-        : styles.container;
+        ? !!props?.colView ? [styles.container, styles.errorContainer, styles.fl1] : [styles.container, styles.errorContainer]
+        : !!props.colView ? [styles.container, styles.fl1] : styles.container;
 
     return (
         <Pressable

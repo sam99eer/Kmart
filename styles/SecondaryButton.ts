@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
   pressedBtn: {
     opacity: 0.8,
   },
+  fl1: {
+    flex: 1,
+  },
 });
 
 export default styles;

@@ -11,6 +11,7 @@ export enum SCREENS {
   ACCOUNT = "Account",
   ABOUT = "About",
   FAQs = "Faq",
+  EDIT_DETAILS = "EditDetails",
 }
 
 export type NavigationProp = {

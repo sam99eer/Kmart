@@ -7,12 +7,16 @@ const SecondaryButton = (props: {
     text: string;
     onPress: () => void;
     isLoading?: boolean;
+    colView?: boolean
 }) => {
+
+    const btnStyles = !!props?.colView ? [styles.container, styles.fl1] : styles.container
+
     return (
         <Pressable
             onPress={!!props.isLoading ? null : props.onPress}
             style={({ pressed }) =>
-                pressed ? [styles.container, styles.pressedBtn] : styles.container
+                pressed ? [btnStyles, styles.pressedBtn] : btnStyles
             }
         >
             {!!props.isLoading ? (

@@ -55,6 +55,7 @@ const Account = () => {
                 <OrderItem
                     icon={<ContactCard />}
                     label="Edit Details"
+                    screen={SCREENS.EDIT_DETAILS}
                 />
 
                 <OrderItem
