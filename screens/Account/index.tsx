@@ -1,5 +1,6 @@
 import OrderItem from "@components/OrderItem";
 import SecondaryButton from "@components/SecondaryButton";
+import { SCREENS } from "@models/screens";
 import { personalDetailsActions } from "@store/actions";
 import { StoreModel } from "@store/store";
 import styles from "@styles/Account";
@@ -46,13 +47,27 @@ const Account = () => {
                     </View>
                 </View>
 
-                <OrderItem icon={<Order />} label="Orders" />
+                <OrderItem
+                    icon={<Order />}
+                    label="Orders"
+                />
 
-                <OrderItem icon={<ContactCard />} label="Edit Details" />
+                <OrderItem
+                    icon={<ContactCard />}
+                    label="Edit Details"
+                />
 
-                <OrderItem icon={<Help />} label="Help" />
+                <OrderItem
+                    icon={<Help />}
+                    label="FAQs"
+                    screen={SCREENS.FAQs}
+                />
 
-                <OrderItem icon={<About />} label="About" />
+                <OrderItem
+                    icon={<About />}
+                    label="About"
+                    screen={SCREENS.ABOUT}
+                />
 
                 <View style={styles.btnContainer}>
                     <Pressable style={styles.logout} onPress={logoutHandler}>

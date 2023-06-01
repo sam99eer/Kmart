@@ -6,6 +6,8 @@ type ProtectedStackScreens = {
   [SCREENS.DASHBOARD]: undefined;
   [SCREENS.CATEGORY_DATA]: { data: IProduct[]; headerText: string };
   [SCREENS.PRODUCT_DETAILS]: { data: IProduct };
+  [SCREENS.ABOUT]: undefined;
+  [SCREENS.FAQs]: undefined;
 };
 
 export type CategoryDataScreenProps = NativeStackScreenProps<
