@@ -44,7 +44,7 @@ function EmptyCart() {
 `;
 
     const EmptyCartSvg = () => (
-        <SvgXml xml={EmptyCart} height={250} width={250} />
+        <SvgXml xml={EmptyCart} height={225} width={225} />
     );
     return <EmptyCartSvg />;
 }

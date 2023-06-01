@@ -8,6 +8,7 @@ export enum SCREENS {
   PRODUCT_DETAILS = "ProductDetails",
   CART = "Cart",
   EXPLORE = "Explore",
+  ACCOUNT = "Account",
 }
 
 export type NavigationProp = {

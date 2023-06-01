@@ -2,6 +2,7 @@ import { COLORS } from '@constants/Colors';
 import { SCREENS } from '@models/screens';
 import { ProtectedBottomScreens } from '@models/screens/ProtectedBottomScreens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Account from '@screens/Account';
 import Cart from '@screens/Cart';
 import Explore from '@screens/Explore';
 import Shop from '@screens/Shop';
@@ -12,7 +13,9 @@ import ExploreIcon from '@svg/ExploreIcon';
 import InactiveCartIcon from '@svg/InactiveCartIcon';
 import InactiveExploreIcon from '@svg/InactiveExploreIcon';
 import InactiveShopIcon from '@svg/InactiveShopIcon';
+import InactiveUser from '@svg/InactiveUser';
 import ShopIcon from '@svg/ShopIcon';
+import User from '@svg/User';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
@@ -56,6 +59,13 @@ const ProtectedBottomRoutes = () => {
                         tabBarIcon: ({ focused }) => focused ? <CartIcon /> : <InactiveCartIcon />,
                         tabBarBadge: cartItems.length ?? 0,
                         tabBarBadgeStyle: !!cartItems.length ? styles.badge : styles.hide
+                    }}
+                />
+                <Tab.Screen
+                    name={SCREENS.ACCOUNT}
+                    component={Account}
+                    options={{
+                        tabBarIcon: ({ focused }) => focused ? <User /> : <InactiveUser />,
                     }}
                 />
             </Tab.Navigator>
