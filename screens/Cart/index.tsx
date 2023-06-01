@@ -3,13 +3,15 @@ import ErrorModal from '@components/ErrorModal'
 import PrimaryButton from '@components/PrimaryButton'
 import SuccessModal from '@components/SuccessModal'
 import { COLORS } from '@constants/Colors'
+import { IOrderHistory } from '@models/data/OrderHistory'
 import { ISuccessError } from '@models/data/SuccessErrorModel'
 import { SCREENS } from '@models/screens'
 import { CartScreenProps } from '@models/screens/ProtectedBottomScreens'
-import { cartActions } from '@store/actions'
+import { cartActions, orderHistoryActions } from '@store/actions'
 import { StoreModel } from '@store/store'
 import styles from '@styles/Cart'
 import EmptyCart from '@svg/EmptyCart'
+import * as SecureStore from "expo-secure-store"
 import React, { useMemo, useState } from 'react'
 import { FlatList, Text, View } from 'react-native'
 import RazorpayCheckout from 'react-native-razorpay'
@@ -19,6 +21,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const Cart = ({ navigation }: CartScreenProps) => {
     const cartData = useSelector((state: StoreModel) => state.cartReducer.data);
     const personalDetails = useSelector((state: StoreModel) => state.personalDetailsReducer);
+    const orders = useSelector((state: StoreModel) => state.orderHistoryReducer.data);
     const dispatch = useDispatch();
 
     const totalPrice = useMemo(() => cartData.reduce((acc, curVal) => acc + (curVal?.price * curVal?.quantity), 0), [cartData]);
@@ -55,8 +58,14 @@ const Cart = ({ navigation }: CartScreenProps) => {
             theme: { color: COLORS.primary }
         }
 
-        RazorpayCheckout.open(options as any).then((data) => {
-            // Store the order
+        RazorpayCheckout.open(options as any).then(async (data) => {
+            const orderItem: IOrderHistory = {
+                order_id: 'order_' + Date.now(),
+                items: cartData
+            };
+            const updatedData: IOrderHistory[] = [...orders, orderItem]
+            await SecureStore.setItemAsync("orderHistory", JSON.stringify(updatedData));
+            dispatch(orderHistoryActions.addItem({ data: orderItem }));
             setModal(oldState => ({
                 ...oldState,
                 success: {

@@ -6,6 +6,7 @@ import About from '@screens/About';
 import CategoryData from '@screens/CategoryData';
 import EditDetails from '@screens/EditDetails';
 import Faq from '@screens/Faq';
+import Orders from '@screens/Orders';
 import ProductDetails from '@screens/ProductDetails';
 
 const Stack = createNativeStackNavigator<ProtectedStackScreens>();
@@ -22,6 +23,7 @@ function ProtectedStackRoutes() {
             <Stack.Screen name={SCREENS.ABOUT} component={About} />
             <Stack.Screen name={SCREENS.FAQs} component={Faq} />
             <Stack.Screen name={SCREENS.EDIT_DETAILS} component={EditDetails} />
+            <Stack.Screen name={SCREENS.ORDERS} component={Orders} />
         </Stack.Navigator>
     );
 }

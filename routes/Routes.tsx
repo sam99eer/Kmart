@@ -1,7 +1,8 @@
+import { IOrderHistory } from '@models/data/OrderHistory';
 import { IPersonalDetails } from '@models/store/PersonalDetailsSliceModel';
 import ProtectedStackRoutes from '@routes/ProtectedStackRoutes';
 import PublicRoutes from '@routes/PublicRoutes';
-import { personalDetailsActions } from '@store/actions';
+import { orderHistoryActions, personalDetailsActions } from '@store/actions';
 import { StoreModel } from '@store/store';
 import * as SecureStore from 'expo-secure-store';
 import * as SplashScreen from 'expo-splash-screen';
@@ -30,6 +31,11 @@ const Routes = () => {
                             })
                         );
                     }
+                })
+                .then(async () => {
+                    const getData = await SecureStore.getItemAsync("orderHistory");
+                    const cartData: IOrderHistory[] = !!getData ? JSON.parse(getData) : [];
+                    dispatch(orderHistoryActions.fillData({ data: cartData }));
                 })
                 .catch((err) =>
                     console.log('Error while fetching SecureStore - ', err)

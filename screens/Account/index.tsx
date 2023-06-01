@@ -1,7 +1,7 @@
 import OrderItem from "@components/OrderItem";
 import SecondaryButton from "@components/SecondaryButton";
 import { SCREENS } from "@models/screens";
-import { personalDetailsActions } from "@store/actions";
+import { cartActions, orderHistoryActions, personalDetailsActions } from "@store/actions";
 import { StoreModel } from "@store/store";
 import styles from "@styles/Account";
 import About from "@svg/About";
@@ -27,9 +27,12 @@ const Account = () => {
         setLoading(true);
         SecureStore.deleteItemAsync("details")
             .then(() => SecureStore.deleteItemAsync("orders"))
+            .then(() => SecureStore.deleteItemAsync("orderHistory"))
             .catch((err) => console.log(err))
             .finally(() => {
                 setLoading(false);
+                dispatch(cartActions.clearCart());
+                dispatch(orderHistoryActions.clearOrderHistory());
                 dispatch(personalDetailsActions.removeCredentials());
             });
     };
@@ -50,6 +53,7 @@ const Account = () => {
                 <OrderItem
                     icon={<Order />}
                     label="Orders"
+                    screen={SCREENS.ORDERS}
                 />
 
                 <OrderItem

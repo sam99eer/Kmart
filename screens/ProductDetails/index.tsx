@@ -39,7 +39,7 @@ const ProductDetails = ({ navigation, route }: ProductDetailsDataScreenProps) =>
         <ScrollView style={styles.container} contentContainerStyle={styles.containerStyle} showsVerticalScrollIndicator={false}>
             <View style={[styles.imgContainer, { paddingTop: top }]}>
                 <View style={[styles.header, { top: 20 + top }]}>
-                    <Pressable onPress={navigation.goBack}>
+                    <Pressable onPress={navigation.goBack} style={styles.icon}>
                         <Back />
                     </Pressable>
                     <Pressable onPress={shareHandler}>

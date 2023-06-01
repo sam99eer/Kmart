@@ -92,6 +92,9 @@ const styles = StyleSheet.create({
   containerStyle: {
     paddingBottom: 60,
   },
+  icon: {
+    paddingRight: 16,
+  },
 });
 
 export default styles;

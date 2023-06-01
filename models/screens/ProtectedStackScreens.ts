@@ -9,6 +9,7 @@ type ProtectedStackScreens = {
   [SCREENS.ABOUT]: undefined;
   [SCREENS.FAQs]: undefined;
   [SCREENS.EDIT_DETAILS]: undefined;
+  [SCREENS.ORDERS]: undefined;
 };
 
 export type CategoryDataScreenProps = NativeStackScreenProps<

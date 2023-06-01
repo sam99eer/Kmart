@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   icon: {
     position: "absolute",
     left: 0,
+    paddingRight: 16,
   },
 });
 
