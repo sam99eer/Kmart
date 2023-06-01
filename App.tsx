@@ -4,6 +4,7 @@ import Routes from '@routes/Routes';
 import store from '@store/store';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
@@ -37,6 +38,7 @@ const App = () => {
                     </SafeAreaProvider>
                 </Provider>
             ) : null}
+            <StatusBar style="auto" translucent />
         </>
     );
 };
