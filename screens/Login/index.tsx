@@ -5,6 +5,7 @@ import { IModal } from '@models/data/IModalModel';
 import { IRegister } from '@models/data/RegisterModel';
 import { SCREENS } from '@models/screens';
 import { LoginScreenProps } from '@models/screens/StackScreens';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { personalDetailsActions } from '@store/actions';
 import styles from '@styles/Login';
 import RedCarrot from '@svg/RedCarrot';
@@ -42,7 +43,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
             return;
         }
         setLoading(true);
-        SecureStore.getItemAsync("users").then(users => {
+        AsyncStorage.getItem("users").then(users => {
             const parsedUsers: IRegister[] = !!users ? JSON.parse(users) : [];
             const findUser = parsedUsers?.find(item => item.phone === phone);
             if (!!findUser === false) {

@@ -1,5 +1,6 @@
 import { IOrderHistory } from '@models/data/OrderHistory';
 import { IPersonalDetails } from '@models/store/PersonalDetailsSliceModel';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import ProtectedStackRoutes from '@routes/ProtectedStackRoutes';
 import PublicRoutes from '@routes/PublicRoutes';
 import { orderHistoryActions, personalDetailsActions } from '@store/actions';
@@ -33,7 +34,7 @@ const Routes = () => {
                     }
                 })
                 .then(async () => {
-                    const getData = await SecureStore.getItemAsync("orderHistory");
+                    const getData = await AsyncStorage.getItem("orderHistory");
                     const cartData: IOrderHistory[] = !!getData ? JSON.parse(getData) : [];
                     dispatch(orderHistoryActions.fillData({ data: cartData }));
                 })

@@ -8,3 +8,17 @@ export const getRandomIntegerArray = (maxNumber: number, size: number) => {
 
   return arr;
 };
+
+export const convert24To12 = (time: string) => {
+  const [hours, minutes] = time.split(".");
+
+  let hourNumber = parseInt(hours, 10);
+
+  const ampm = hourNumber < 12 ? "AM" : "PM";
+
+  if (hourNumber >= 12) {
+    hourNumber -= 12;
+  }
+
+  return `${hourNumber}:${minutes} ${ampm}`;
+};

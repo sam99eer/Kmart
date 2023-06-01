@@ -35,7 +35,7 @@ export const PRODUCTS = [
     image: IMAGES.cherry,
     description:
       "Cherries are low in calories and chock full of fiber, vitamins, minerals, nutrients, and other good-for-you ingredients. You'll get vitamins C, A, and K. Each long-stemmed fruit delivers potassium, magnesium, and calcium too. They also bring antioxidants, like beta-carotene, and the essential nutrient choline. Cherries have a rich content of antioxidants that have a lot of good effects on our health. Consumption of cherries good for you, it helps to prevent certain types of cancer, reduces inflammation, and prevents gout, brings relief from arthritic pain, and even helps to reduce belly fat. In addition to these, cherries also supports healthy sleep, reduces post-exercise muscle pain, lowers the risk of stroke and takes care of your skin and hair.",
-    price: 278,
+    price: 170,
     quantityUnit: "per 250g",
     rating: 4,
     isExclusive: true,

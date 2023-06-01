@@ -1,4 +1,5 @@
 import Header from '@components/Header'
+import OrderHistoryItem from '@components/OrderHistoryItem'
 import { StoreModel } from '@store/store'
 import styles from '@styles/Order'
 import EmptyOrderHistory from '@svg/EmptyOrderHistory'
@@ -16,7 +17,9 @@ const Orders = () => {
             <Header title='Orders' />
             <FlatList
                 data={orders || []}
-                renderItem={() => <></>}
+                keyExtractor={item => item.order_id}
+                renderItem={({ item }) => <OrderHistoryItem data={item} />}
+                contentContainerStyle={styles.list}
                 ListEmptyComponent={<View style={styles.emptyContainer}>
                     <EmptyOrderHistory />
                     <Text style={styles.emptyHeaderTxt}>No Order History Found!</Text>

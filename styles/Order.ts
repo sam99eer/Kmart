@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: COLORS.grey,
   },
+  list: {
+    paddingTop: 20,
+    paddingBottom: 60,
+    rowGap: 16,
+  },
 });
 
 export default styles;

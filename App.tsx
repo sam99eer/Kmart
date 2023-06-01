@@ -7,7 +7,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-
 SplashScreen.preventAutoHideAsync();
 
 const App = () => {
@@ -22,7 +21,6 @@ const App = () => {
                 semibold: FONTS.SEMIBOLD,
                 bold: FONTS.BOLD,
             });
-
             setLoaded(true);
         }
         loadAssets();

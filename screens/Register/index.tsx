@@ -7,6 +7,7 @@ import { IRegister } from '@models/data/RegisterModel';
 import { ISuccessError } from '@models/data/SuccessErrorModel';
 import { SCREENS } from '@models/screens';
 import { RegisterScreenProps } from '@models/screens/StackScreens';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from '@styles/Register';
 import * as SecureStore from 'expo-secure-store';
 import React, { useState } from 'react';
@@ -70,7 +71,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
             return;
         }
         setLoading(true);
-        SecureStore.getItemAsync('users')
+        AsyncStorage.getItem('users')
             .then(
                 (users) => {
                     const parsedUsers: IRegister[] = !!users
@@ -96,7 +97,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
                         JSON.stringify(data)
                     ).then(() => {
                         parsedUsers.push(data);
-                        SecureStore.setItemAsync(
+                        AsyncStorage.setItem(
                             'users',
                             JSON.stringify(parsedUsers)
                         ).then(() =>

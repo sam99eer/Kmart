@@ -5,13 +5,18 @@ import { PRODUCTS } from '@data/Products';
 import { IProduct } from '@models/data/ProductModel';
 import { SCREENS } from '@models/screens';
 import { ShopScreenProps } from '@models/screens/ProtectedBottomScreens';
+import { useScrollToTop } from '@react-navigation/native';
 import styles from '@styles/Shop';
 import SmallRedCarrot from '@svg/SmallRedCarrot';
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { FlatList, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Shop = ({ navigation }: ShopScreenProps) => {
+
+    const scrollRef = useRef(null);
+
+    useScrollToTop(scrollRef);
 
     const randomNumbers = useMemo(() => getRandomIntegerArray(PRODUCTS.length, 10), []);
     const TODAY_PICK_DATA = useMemo(() => PRODUCTS.filter((_, index) => randomNumbers.includes(index)), []);
@@ -22,7 +27,7 @@ const Shop = ({ navigation }: ShopScreenProps) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer} ref={scrollRef}>
                 <View style={styles.header}>
                     <SmallRedCarrot />
                     <Text style={styles.name}>KMart</Text>

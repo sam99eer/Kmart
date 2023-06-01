@@ -7,11 +7,11 @@ import { IOrderHistory } from '@models/data/OrderHistory'
 import { ISuccessError } from '@models/data/SuccessErrorModel'
 import { SCREENS } from '@models/screens'
 import { CartScreenProps } from '@models/screens/ProtectedBottomScreens'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { cartActions, orderHistoryActions } from '@store/actions'
 import { StoreModel } from '@store/store'
 import styles from '@styles/Cart'
 import EmptyCart from '@svg/EmptyCart'
-import * as SecureStore from "expo-secure-store"
 import React, { useMemo, useState } from 'react'
 import { FlatList, Text, View } from 'react-native'
 import RazorpayCheckout from 'react-native-razorpay'
@@ -39,7 +39,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
             isVisible: false,
             msg: ''
         }
-    })
+    });
 
     const paymentHandler = () => {
         setLoading(true);
@@ -59,12 +59,19 @@ const Cart = ({ navigation }: CartScreenProps) => {
         }
 
         RazorpayCheckout.open(options as any).then(async (data) => {
+            const currentDate = Date.now();
+            const orderDate = `${new Date(currentDate).getDate().toString().padStart(2, "0")}-${(new Date(currentDate).getMonth() + 1).toString().padStart(2, "0")}-${new Date(currentDate).getFullYear()}`
+            const orderTime = `${new Date(currentDate).getHours().toString().padStart(2, "0")}.${new Date(currentDate).getMinutes().toString().padStart(2, "0")}`
+
             const orderItem: IOrderHistory = {
-                order_id: 'order_' + Date.now(),
+                order_id: 'Order ' + Date.now(),
+                date: orderDate,
+                time: orderTime,
+                total_cost: totalPrice,
                 items: cartData
             };
-            const updatedData: IOrderHistory[] = [...orders, orderItem]
-            await SecureStore.setItemAsync("orderHistory", JSON.stringify(updatedData));
+            const updatedData: IOrderHistory[] = [...orders, orderItem];
+            await AsyncStorage.setItem("orderHistory", JSON.stringify(updatedData));
             dispatch(orderHistoryActions.addItem({ data: orderItem }));
             setModal(oldState => ({
                 ...oldState,

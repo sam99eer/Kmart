@@ -1,6 +1,7 @@
 import OrderItem from "@components/OrderItem";
 import SecondaryButton from "@components/SecondaryButton";
 import { SCREENS } from "@models/screens";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { cartActions, orderHistoryActions, personalDetailsActions } from "@store/actions";
 import { StoreModel } from "@store/store";
 import styles from "@styles/Account";
@@ -26,8 +27,7 @@ const Account = () => {
     const logoutHandler = () => {
         setLoading(true);
         SecureStore.deleteItemAsync("details")
-            .then(() => SecureStore.deleteItemAsync("orders"))
-            .then(() => SecureStore.deleteItemAsync("orderHistory"))
+            .then(() => AsyncStorage.removeItem("orderHistory"))
             .catch((err) => console.log(err))
             .finally(() => {
                 setLoading(false);
