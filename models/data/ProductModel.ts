@@ -1,5 +1,12 @@
 import { ImageSourcePropType } from "react-native";
 
+export type IProductCategory =
+  | "veggies"
+  | "drinks"
+  | "nonveg"
+  | "basket"
+  | "fruits";
+
 export interface IProduct {
   id: string;
   name: string;
@@ -10,5 +17,5 @@ export interface IProduct {
   rating: number;
   isExclusive: boolean;
   isBestSelling: boolean;
-  category: "veggies" | "drinks" | "nonveg" | "basket" | "fruits";
+  category: IProductCategory;
 }

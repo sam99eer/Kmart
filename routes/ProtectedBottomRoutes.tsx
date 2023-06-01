@@ -3,11 +3,14 @@ import { SCREENS } from '@models/screens';
 import { ProtectedBottomScreens } from '@models/screens/ProtectedBottomScreens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Cart from '@screens/Cart';
+import Explore from '@screens/Explore';
 import Shop from '@screens/Shop';
 import { StoreModel } from '@store/store';
 import styles from '@styles/BottomBar';
 import CartIcon from '@svg/CartIcon';
+import ExploreIcon from '@svg/ExploreIcon';
 import InactiveCartIcon from '@svg/InactiveCartIcon';
+import InactiveExploreIcon from '@svg/InactiveExploreIcon';
 import InactiveShopIcon from '@svg/InactiveShopIcon';
 import ShopIcon from '@svg/ShopIcon';
 import React from 'react';
@@ -28,7 +31,8 @@ const ProtectedBottomRoutes = () => {
                 tabBarActiveTintColor: COLORS.primary,
                 tabBarInactiveTintColor: COLORS.lightblack,
                 tabBarLabelStyle: styles.label,
-                tabBarStyle: styles.tabBar
+                tabBarStyle: styles.tabBar,
+                tabBarHideOnKeyboard: true
             }}
             >
                 <Tab.Screen
@@ -36,6 +40,13 @@ const ProtectedBottomRoutes = () => {
                     component={Shop}
                     options={{
                         tabBarIcon: ({ focused }) => focused ? <ShopIcon /> : <InactiveShopIcon />,
+                    }}
+                />
+                <Tab.Screen
+                    name={SCREENS.EXPLORE}
+                    component={Explore}
+                    options={{
+                        tabBarIcon: ({ focused }) => focused ? <ExploreIcon /> : <InactiveExploreIcon />,
                     }}
                 />
                 <Tab.Screen

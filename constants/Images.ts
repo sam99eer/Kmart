@@ -32,4 +32,9 @@ export const IMAGES = {
   corn: require("@assets/products/veggies/corn.png"),
   potato: require("@assets/products/veggies/potato.png"),
   tomato: require("@assets/products/veggies/tomato.png"),
+  VeggiesMain: require("@assets/images/Vegetables.png"),
+  BeveragesMain: require("@assets/images/beverages.png"),
+  FruitsMain: require("@assets/images/Fruits.png"),
+  NonvegMain: require("@assets/images/Nonveg.png"),
+  BasketsMain: require("@assets/images/Baskets.png"),
 };

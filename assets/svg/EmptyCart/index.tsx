@@ -36,8 +36,8 @@ function EmptyCart() {
     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_48_9314" result="shape"/>
     </filter>
     <linearGradient id="paint0_linear_48_9314" x1="298.672" y1="272.304" x2="229.825" y2="336.825" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#FF8960"/>
-    <stop offset="1" stop-color="#FF62A5"/>
+    <stop stop-color="#CAE7D5"/>
+    <stop offset="1" stop-color="#53B175"/>
     </linearGradient>
     </defs>
     </svg>    
