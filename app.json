@@ -1,32 +1,39 @@
 {
-    "expo": {
-        "name": "KMart",
-        "slug": "Kmart",
-        "version": "1.0.0",
-        "orientation": "portrait",
-        "icon": "./assets/icons/icon.png",
-        "userInterfaceStyle": "light",
-        "androidStatusBar": {
-            "hidden": true
-        },
-        "splash": {
-            "image": "./assets/icons/splash.png",
-            "resizeMode": "cover",
-            "backgroundColor": "#ffffff"
-        },
-        "assetBundlePatterns": ["**/*"],
-        "ios": {
-            "supportsTablet": true
-        },
-        "android": {
-            "adaptiveIcon": {
-                "foregroundImage": "./assets/icons/adaptive-icon.png",
-                "backgroundColor": "#B9DFC7"
-            },
-            "package": "com.sameer.kmart"
-        },
-        "web": {
-            "favicon": "./assets/icons/favicon.png"
-        }
+  "expo": {
+    "name": "KMart",
+    "slug": "Kmart",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icons/icon.png",
+    "userInterfaceStyle": "light",
+    "androidStatusBar": {
+      "hidden": true
+    },
+    "splash": {
+      "image": "./assets/icons/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "backgroundColor": "#B9DFC7"
+      },
+      "package": "com.sameer.kmart"
+    },
+    "web": {
+      "favicon": "./assets/icons/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fc715dc8-ec49-4c70-9f30-6a83f5bb1c41"
+      }
     }
+  }
 }
