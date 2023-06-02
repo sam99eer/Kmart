@@ -46,8 +46,6 @@ const Cart = ({ navigation }: CartScreenProps) => {
         const options = {
             description: 'KMart Cart Checkout',
             key: 'rzp_test_xWxohjiErGeIgV',
-            // rzp_test_xWxohjiErGeIgV      rzp_test_KLMZ1TUbPozBzN
-            image: 'https://i.ibb.co/3dT7Pnx/veggie-basket.png',
             currency: 'INR',
             amount: totalPrice * 100,
             name: 'KMart',
@@ -59,43 +57,62 @@ const Cart = ({ navigation }: CartScreenProps) => {
         }
 
         RazorpayCheckout.open(options as any).then(async (data) => {
-            const currentDate = Date.now();
-            const orderDate = `${new Date(currentDate).getDate().toString().padStart(2, "0")}-${(new Date(currentDate).getMonth() + 1).toString().padStart(2, "0")}-${new Date(currentDate).getFullYear()}`
-            const orderTime = `${new Date(currentDate).getHours().toString().padStart(2, "0")}.${new Date(currentDate).getMinutes().toString().padStart(2, "0")}`
+            if (!!data.razorpay_payment_id) {
+                const currentDate = Date.now();
+                const orderDate = `${new Date(currentDate).getDate().toString().padStart(2, "0")}-${(new Date(currentDate).getMonth() + 1).toString().padStart(2, "0")}-${new Date(currentDate).getFullYear()}`
+                const orderTime = `${new Date(currentDate).getHours().toString().padStart(2, "0")}.${new Date(currentDate).getMinutes().toString().padStart(2, "0")}`
 
-            const orderItem: IOrderHistory = {
-                order_id: 'Order ' + Date.now(),
-                date: orderDate,
-                time: orderTime,
-                total_cost: totalPrice,
-                items: cartData
-            };
-            const updatedData: IOrderHistory[] = [...orders, orderItem];
-            await AsyncStorage.setItem("orderHistory", JSON.stringify(updatedData));
-            dispatch(orderHistoryActions.addItem({ data: orderItem }));
-            setModal(oldState => ({
-                ...oldState,
-                success: {
-                    btnText: 'Shop More',
-                    heading: 'Success!',
-                    isVisible: true,
-                    msg: `Your payment is successful and order has been placed. Your Order ID is ${data?.razorpay_order_id} and Payment ID is ${data?.razorpay_payment_id}.`
-                }
-            }))
+                const orderItem: IOrderHistory = {
+                    order_id: 'Order ' + Date.now(),
+                    date: orderDate,
+                    time: orderTime,
+                    total_cost: totalPrice,
+                    items: cartData
+                };
+                const updatedData: IOrderHistory[] = [...orders, orderItem];
+                await AsyncStorage.setItem("orderHistory", JSON.stringify(updatedData));
+                dispatch(orderHistoryActions.addItem({ data: orderItem }));
+                setModal(oldState => ({
+                    ...oldState,
+                    success: {
+                        btnText: 'Shop More',
+                        heading: 'Success!',
+                        isVisible: true,
+                        msg: `Your payment of ₹${orderItem.total_cost} is successful and order has been placed. Your Order ID is ${orderItem.order_id} and Payment ID is ${data?.razorpay_payment_id}.`
+                    }
+                }));
+                return;
+            }
+            throw new Error("Unable to make payment right now");
         }).catch((error) => {
+            const errorMessage = !!error?.error ? error?.error?.description : "Unable to process payment this time. Please try again later.";
             setModal(oldState => ({
                 ...oldState,
                 error: {
                     btnText: 'Retry',
                     heading: 'Something went wrong!',
                     isVisible: true,
-                    msg: !!error?.description ? error?.description : "Unable to process payment this time. Please try again later."
+                    msg: errorMessage
                 }
             }))
-        }).finally(() => setLoading(false))
+        }).finally(() => setLoading(false));
     }
 
     const successHandler = () => {
+        setModal({
+            error: {
+                btnText: '',
+                heading: '',
+                isVisible: false,
+                msg: ''
+            },
+            success: {
+                btnText: '',
+                heading: '',
+                isVisible: false,
+                msg: ''
+            },
+        })
         dispatch(cartActions.clearCart());
         navigation.navigate(SCREENS.SHOP);
     }

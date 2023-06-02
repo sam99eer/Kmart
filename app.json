@@ -22,7 +22,8 @@
             "adaptiveIcon": {
                 "foregroundImage": "./assets/icons/adaptive-icon.png",
                 "backgroundColor": "#B9DFC7"
-            }
+            },
+            "package": "com.sameer.kmart"
         },
         "web": {
             "favicon": "./assets/icons/favicon.png"
