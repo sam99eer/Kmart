@@ -8,8 +8,7 @@
     "userInterfaceStyle": "light",
     "androidStatusBar": {
       "backgroundColor": "#00000000",
-      "barStyle": "dark-content",
-      "translucent": true
+      "barStyle": "dark-content"
     },
     "plugins": ["./withAndroidSplashScreen.js"],
     "splash": {
