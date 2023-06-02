@@ -7,8 +7,11 @@
     "icon": "./assets/icons/icon.png",
     "userInterfaceStyle": "light",
     "androidStatusBar": {
-      "hidden": true
+      "backgroundColor": "#00000000",
+      "barStyle": "dark-content",
+      "translucent": true
     },
+    "plugins": ["./withAndroidSplashScreen.js"],
     "splash": {
       "image": "./assets/icons/splash.png",
       "resizeMode": "cover",

@@ -38,7 +38,7 @@ const App = () => {
                     </SafeAreaProvider>
                 </Provider>
             ) : null}
-            <StatusBar style="auto" translucent />
+            <StatusBar style="auto" translucent backgroundColor='transparent' />
         </>
     );
 };

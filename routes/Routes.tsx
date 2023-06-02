@@ -19,6 +19,7 @@ const Routes = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        let timer: NodeJS.Timeout | null = null;
         async function checkToken() {
             await SecureStore.getItemAsync('details')
                 .then((details) => {
@@ -41,12 +42,18 @@ const Routes = () => {
                 .catch((err) =>
                     console.log('Error while fetching SecureStore - ', err)
                 )
-                .finally(async () => {
+                .finally(() => {
                     setLoading(false);
-                    await SplashScreen.hideAsync();
+                    timer = setTimeout(async () => await SplashScreen.hideAsync(), 2000);
                 });
         }
         checkToken();
+
+        return () => {
+            if (!!timer) {
+                clearTimeout(timer);
+            }
+        }
     }, [details.name, details.phone]);
 
     return (
